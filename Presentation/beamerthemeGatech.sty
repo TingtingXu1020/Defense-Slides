@@ -1,0 +1,47 @@
+% Formally establish Beamer theme package
+\ProvidesPackage{beamerthemeGatech}
+
+% --------  Invoke presentation mode  ----------------
+\mode<presentation>
+
+% --------  Set color, inner theme, frame title formats, etc.  ------------
+\usecolortheme{GatechBeaver}
+\useinnertheme{circles}
+\setbeamerfont{frametitle}{size=\Large}
+
+% --------  Define behavior for theme option "minimal"  -----------
+\DeclareOptionBeamer{minimal}{
+    \setbeamertemplate{frametitle}
+    {
+        \nointerlineskip
+        \begin{beamercolorbox}[sep=0.3cm,ht=27pt,wd=\paperwidth]{frametitle}
+            \vbox{}\vskip-2ex%
+            \strut\insertframetitle\strut
+            \vskip-0.8ex%
+        \end{beamercolorbox}
+    } 
+}
+
+% --------  Define behavior for theme option "sidebarleft"  -----------
+\DeclareOptionBeamer{sidebarleft}{
+    \useoutertheme[height=20pt,width=50pt,left]{sidebar}
+ \logo{\includegraphics[height=1.9cm]{./figures/squarelogo.png}\vspace{-30pt}}
+
+}
+
+% --------  Define behavior for theme option "sidebarright"  -----------
+%\DeclareOptionBeamer{sidebarright}{
+%    \useoutertheme[height=27pt,width=50pt,right]{sidebar}
+%}
+
+\setbeamertemplate{navigation symbols}{}
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+
+\ProcessOptionsBeamer
+% --------  Invoke all mode
+\mode<all>
